@@ -6,7 +6,7 @@
         "description": "将浴霸配置为空调实体。",
         "data": {
           "name": "名称",
-          "heat_switch": "制热开关实体",
+          "heat_switch": "取暖开关实体",
           "fan_switch": "吹风开关实体",
           "vent_switch": "换气开关实体",
           "temp_sensor": "温度传感器实体"
