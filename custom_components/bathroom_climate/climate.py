@@ -90,7 +90,7 @@ class BathroomClimateEntity(ClimateEntity, RestoreEntity):
         self._vent_switch = vent_switch
         self._temp_sensor = temp_sensor
 
-        self._target_temp: float | None = 20.0
+        self._target_temp: float | None = 50.0
         self._current_temp: float | None = None
         self._hvac_mode: HVACMode = HVACMode.OFF
 
