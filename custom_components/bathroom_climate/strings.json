@@ -1,0 +1,20 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Bathroom Climate Setup",
+        "description": "Configure your bathroom heater as a climate entity.",
+        "data": {
+          "name": "Name",
+          "heat_switch": "Heating Switch Entity",
+          "fan_switch": "Fan Switch Entity",
+          "vent_switch": "Ventilation Switch Entity",
+          "temp_sensor": "Temperature Sensor Entity"
+        }
+      }
+    },
+    "error": {
+      "invalid_entity": "Invalid entity ID"
+    }
+  }
+}
