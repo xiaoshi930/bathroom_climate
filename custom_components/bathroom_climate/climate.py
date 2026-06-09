@@ -69,8 +69,8 @@ class BathroomClimateEntity(ClimateEntity, RestoreEntity):
     _attr_hvac_modes = SUPPORTED_HVAC_MODES
     _attr_supported_features = SUPPORTED_FEATURES
     _attr_temperature_unit = UnitOfTemperature.CELSIUS
-    _attr_min_temp = 5.0
-    _attr_max_temp = 35.0
+    _attr_min_temp = 20.0
+    _attr_max_temp = 50.0
     _attr_target_temperature_step = 1.0
 
     def __init__(
