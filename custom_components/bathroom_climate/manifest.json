@@ -1,6 +1,6 @@
 {
   "domain": "bathroom_climate",
-  "name": "消逝浴霸转换空调",
+  "name": "浴霸转换空调",
   "codeowners": [],
   "config_flow": true,
   "documentation": "",
