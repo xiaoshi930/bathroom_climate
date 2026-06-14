@@ -150,8 +150,29 @@ class BathroomClimateEntity(ClimateEntity, RestoreEntity):
     @callback
     def _async_switch_changed(self, event) -> None:
         """Handle switch state changes - sync hvac_mode from physical switch changes."""
-        # Re-evaluate the hvac_action based on switch states
+        old_mode = self._hvac_mode
+        self._hvac_mode = self._infer_hvac_mode_from_switches()
+        if self._hvac_mode != old_mode:
+            _LOGGER.debug(
+                "Bathroom climate: switch changed, hvac_mode %s -> %s",
+                old_mode.value,
+                self._hvac_mode.value,
+            )
         self.async_write_ha_state()
+
+    def _infer_hvac_mode_from_switches(self) -> HVACMode:
+        """Infer the hvac_mode from the actual switch states."""
+        heat_on = self._is_switch_on(self._heat_switch)
+        fan_on = self._is_switch_on(self._fan_switch)
+        vent_on = self._is_switch_on(self._vent_switch)
+
+        if heat_on and fan_on:
+            return HVACMode.HEAT
+        if fan_on and not heat_on:
+            return HVACMode.FAN_ONLY
+        if vent_on and not fan_on:
+            return HVACMode.DRY
+        return HVACMode.OFF
 
     def _check_heat_hysteresis(self) -> None:
         """In heat mode, turn off heating when current temp exceeds target by 5 degrees."""
